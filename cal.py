@@ -14,7 +14,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_Form(object):
     def setupUi(self, Form):
         Form.setObjectName("Form")
-        Form.resize(360, 550)
+        Form.resize(361, 550)
         Form.setStyleSheet("#Form{\n"
 "background:#92d9ff;\n"
 "}")
