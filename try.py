@@ -271,9 +271,9 @@ powerup_images['gun'] = pygame.image.load(r'C:\Users\LENOVO\Downloads\pics\bolt_
 
 # Load all game sounds
 shoot_sound = pygame.mixer.Sound(r'C:\Users\LENOVO\Downloads\soundeffect\pew.wav')
-#shield_sound = pygame.mixer.Sound(r'C:\Users\LENOVO\Downloads\soundeffect\pew.wav')
-#power_sound = pygame.mixer.Sound(r'C:\Users\LENOVO\Downloads\soundeffect\expl3.wav')
-expl_sounds = pygame.mixer.Sound(r'C:\Users\LENOVO\Downloads\soundeffect\expl6.wav')
+shield_sound = pygame.mixer.Sound(r'C:\Users\LENOVO\Downloads\soundeffect\pew.wav')
+power_sound = pygame.mixer.Sound(r'C:\Users\LENOVO\Downloads\soundeffect\expl3.wav')
+expl_sound = pygame.mixer.Sound(r'C:\Users\LENOVO\Downloads\soundeffect\expl6.wav')
 player_die_sound = pygame.mixer.Sound(r'C:\Users\LENOVO\Downloads\soundeffect\rumble1.ogg')
 pygame.mixer.music.load(r'C:\Users\LENOVO\Downloads\soundeffect\tgfcoder-FrozenJam-SeamlessLoop.ogg')
 pygame.mixer.music.set_volume(0.4)
@@ -311,7 +311,7 @@ while running:
     hits = pygame.sprite.groupcollide(mobs, bullets, True, True)
     for hit in hits:
         score += 50 - hit.radius
-        random.choice(expl_sounds).play()
+        expl_sound.play()
         expl = Explosion(hit.rect.center, 'lg')
         all_sprites.add(expl)
         if random.random() > 0.9:
@@ -340,12 +340,12 @@ while running:
     for hit in hits:
         if hit.type == 'shield':
             player.shield += random.randrange(10, 30)
-            #shield_sound.play()
+            shield_sound.play()
             if player.shield >= 100:
                 player.shield = 100
         if hit.type == 'gun':
             player.powerup()
-            #power_sound.play()
+            power_sound.play()
 
     # if the player died and the explosion has finished playing
     if player.lives == 0 and not death_explosion.alive():
