@@ -276,7 +276,7 @@ power_sound = pygame.mixer.Sound(r'C:\Users\LENOVO\Downloads\soundeffect\expl3.w
 expl_sound = pygame.mixer.Sound(r'C:\Users\LENOVO\Downloads\soundeffect\expl6.wav')
 player_die_sound = pygame.mixer.Sound(r'C:\Users\LENOVO\Downloads\soundeffect\rumble1.ogg')
 pygame.mixer.music.load(r'C:\Users\LENOVO\Downloads\soundeffect\tgfcoder-FrozenJam-SeamlessLoop.ogg')
-pygame.mixer.music.set_volume(0.4)
+pygame.mixer.music.set_volume(0.2)
 
 pygame.mixer.music.play(loops=-1)
 # Game loop
