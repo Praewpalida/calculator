@@ -236,7 +236,6 @@ def show_go_screen():
             if event.type == pygame.KEYUP:
                 waiting = False
 
-# Load all game graphics
 background = pygame.image.load(r'C:\Users\LENOVO\Downloads\pics\space.png').convert()
 background_rect = background.get_rect()
 player_img = pygame.image.load(r'C:\Users\LENOVO\Downloads\pics\ships1.png').convert()
@@ -266,7 +265,6 @@ powerup_images['shield'] = pygame.image.load(r'C:\Users\LENOVO\Downloads\pics\sh
 powerup_images['gun'] = pygame.image.load(r'C:\Users\LENOVO\Downloads\pics\bolt_gold.png').convert()
 
 
-# Load all game sounds
 shoot_sound = pygame.mixer.Sound(r'C:\Users\LENOVO\Downloads\soundeffect\pew.wav')
 shield_sound = pygame.mixer.Sound(r'C:\Users\LENOVO\Downloads\soundeffect\pew.wav')
 power_sound = pygame.mixer.Sound(r'C:\Users\LENOVO\Downloads\soundeffect\expl3.wav')
@@ -355,7 +353,7 @@ while running:
     draw_text(screen, str(score), 18, WIDTH / 2, 10)
     draw_shield_bar(screen, 5, 5, player.shield)
     draw_lives(screen, WIDTH - 100, 5, player.lives, player_mini_img)
-    # *after* drawing everything, flip the display
+    
     pygame.display.flip()
 
 pygame.quit()
