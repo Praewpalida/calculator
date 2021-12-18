@@ -225,7 +225,7 @@ def show_go_screen():
     draw_text(screen, "Let's play!", 64, WIDTH / 2, HEIGHT / 4)
     draw_text(screen, "Arrow keys move, Space to fire", 22,
               WIDTH / 2, HEIGHT / 2)
-    draw_text(screen, "Press a key to begin", 18, WIDTH / 2, HEIGHT * 3 / 4)
+    draw_text(screen, "Press a key to begin", 20, WIDTH / 2, HEIGHT * 3 / 4)
     pygame.display.flip()
     waiting = True
     while waiting:
@@ -309,7 +309,7 @@ while running:
         expl_sound.play()
         expl = Explosion(hit.rect.center, 'lg')
         all_sprites.add(expl)
-        if random.random() > 0.9:
+        if random.random() > 0.8:
             pow = Pow(hit.rect.center)
             all_sprites.add(pow)
             powerups.add(pow)
@@ -334,7 +334,7 @@ while running:
     hits = pygame.sprite.spritecollide(player, powerups, True)
     for hit in hits:
         if hit.type == 'shield':
-            player.shield += random.randrange(10, 30)
+            player.shield += 20
             shield_sound.play()
             if player.shield >= 100:
                 player.shield = 100
@@ -357,3 +357,4 @@ while running:
     pygame.display.flip()
 
 pygame.quit()
+
