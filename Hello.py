@@ -6,6 +6,9 @@ WIDTH = 480
 HEIGHT = 600
 FPS = 60
 POWERUP_TIME = 5000
+HS_FILE = "highscore.txt"
+score = 0
+highscore = 0
 
 # define colors
 WHITE = (255, 255, 255)
@@ -34,6 +37,19 @@ def newmob():
     m = Mob()
     all_sprites.add(m)
     mobs.add(m)
+
+def load_data():
+    # load high score
+    dir = path.dirname(__file__)
+    global highscore
+    try:
+        #try to read the file
+        with open(path.join(dir, HS_FILE), 'r+') as f:
+            highscore = int(f.read())
+    except:
+        #create the file
+        with open(path.join(dir, HS_FILE), 'w'):
+            highscore = 0
 
 def draw_shield_bar(surf, x, y, pct):
     if pct < 0:
@@ -221,11 +237,20 @@ class Explosion(pygame.sprite.Sprite):
                 self.rect.center = center
 
 def show_go_screen():
+    global highscore
     screen.blit(background, background_rect)
     draw_text(screen, "Let's play!", 64, WIDTH / 2, HEIGHT / 4)
-    draw_text(screen, "Arrow keys move, Space to fire", 22,
-              WIDTH / 2, HEIGHT / 2)
+    draw_text(screen, "Arrow keys move, Space to fire", 22, WIDTH / 2, HEIGHT / 2)
     draw_text(screen, "Press a key to begin", 20, WIDTH / 2, HEIGHT * 3 / 4)
+    #draw_text(screen, "high_score: " + str(highscore), 22, WIDTH / 2, 20)
+    if score > highscore:
+        highscore = score
+        draw_text(screen, "High Score: " + str(highscore), 22, WIDTH / 2, HEIGHT / 2 + 40)
+        dir = path.dirname(__file__)
+        with open(path.join(dir, HS_FILE), 'w') as f:
+            f.write(str(score))
+    else:
+        draw_text(screen, "High Score: " + str(highscore), 22, WIDTH / 2, HEIGHT / 2 + 40)
     pygame.display.flip()
     waiting = True
     while waiting:
